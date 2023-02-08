@@ -18,10 +18,10 @@
     "Oqtane.Client": {
       "commandName": "Project",
       "launchBrowser": true,
+      "applicationUrl": "http://localhost:44358/",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
-      },
-      "applicationUrl": "http://localhost:44358/"
+      }
     }
   }
 }
