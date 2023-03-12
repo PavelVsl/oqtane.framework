@@ -41,7 +41,7 @@ namespace Oqtane.Services
         {
             if (!(folderPath.EndsWith(System.IO.Path.DirectorySeparatorChar) || folderPath.EndsWith(System.IO.Path.AltDirectorySeparatorChar)))
             {
-                folderPath = Utilities.PathCombine(folderPath, System.IO.Path.DirectorySeparatorChar.ToString());
+                folderPath = Utilities.PathCombine(folderPath, "/");
             }
 
             var path = WebUtility.UrlEncode(folderPath);
