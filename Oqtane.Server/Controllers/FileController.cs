@@ -94,15 +94,16 @@ namespace Oqtane.Controllers
         public IEnumerable<Models.File> Get(int siteId, string path)
         {
             List<Models.File> files;
+            path = WebUtility.UrlDecode(path).Replace("\\", "/");
 
-            Folder folder = _folders.GetFolder(siteId, WebUtility.UrlDecode(path));
+            Folder folder = _folders.GetFolder(siteId, path);
             if (folder != null && folder.SiteId == _alias.SiteId && _userPermissions.IsAuthorized(User, PermissionNames.Browse, folder.Permissions))
             {
                 files = _files.GetFiles(folder.FolderId).ToList();
             }
             else
             {
-                _logger.Log(LogLevel.Error, this, LogFunction.Security, "Unauthorized File Get Attempt {SiteId} {Path}", siteId, path);
+                _logger.Log(LogLevel.Error, this, LogFunction.Security, "Unauthorized File Get Attempt {SiteId} {Path}  ", siteId, path);
                 HttpContext.Response.StatusCode = (int)HttpStatusCode.Forbidden;
                 files = null;
             }

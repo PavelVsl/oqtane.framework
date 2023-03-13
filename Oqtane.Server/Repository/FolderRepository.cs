@@ -79,6 +79,7 @@ namespace Oqtane.Repository
 
         public Folder GetFolder(int siteId, string path)
         {
+            path= path.Replace("\\", "/");
             Folder folder = _db.Folder.Where(item => item.SiteId == siteId && item.Path == path).FirstOrDefault();
             if (folder != null)
             {
