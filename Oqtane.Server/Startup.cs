@@ -30,7 +30,7 @@ namespace Oqtane
         public Startup(IWebHostEnvironment env, ILocalizationManager localizationManager)
         {
             var builder = new ConfigurationBuilder()
-                .SetBasePath(env.ContentRootPath)
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory )
                 .AddJsonFile("appsettings.json", false, true)
                 .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true, true);
             Configuration = builder.Build();
