@@ -28,6 +28,7 @@
     <EmbeddedResource Remove="wwwroot\Themes\Templates\**" />
     <Content Remove="appsettings.json" />
     <Content Remove="appsettings.release.json" />
+    <Content Remove="wwwroot\Packages\Oqtane.Database.SqlServer.nupkg.bak" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Scripts\MigrateMaster.sql" />
