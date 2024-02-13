@@ -64,6 +64,7 @@
   <ItemGroup>
     <ModuleTemplateFiles Include="$(ProjectDir)wwwroot\Modules\Templates\**\*.*" />
     <ThemeTemplateFiles Include="$(ProjectDir)wwwroot\Themes\Templates\**\*.*" />
+    <ThemeTemplateFiles Remove="wwwroot\Themes\Templates\**" />
   </ItemGroup>
   <Target Name="AddPayloadsFolder" AfterTargets="Publish">
     <Copy SourceFiles="@(ModuleTemplateFiles)" DestinationFiles="@(ModuleTemplateFiles->'$(PublishDir)wwwroot\Modules\Templates\%(RecursiveDir)%(Filename)%(Extension)')" SkipUnchangedFiles="false" />
@@ -76,6 +77,7 @@
   <ItemGroup>
     <None Remove="wwwroot\Modules\**" />
     <None Remove="wwwroot\Themes\**" />
+    <None Remove="wwwroot\Themes\Templates\**" />
   </ItemGroup>
   <ItemGroup>
     <_ContentIncludedByDefault Remove="wwwroot\Modules\Oqtane.Modules.Admin.Login\Module.css" />
@@ -121,5 +123,8 @@
     <_ContentIncludedByDefault Remove="wwwroot\Themes\Templates\External\Package\release.cmd" />
     <_ContentIncludedByDefault Remove="wwwroot\Themes\Templates\External\Package\[Owner].[Theme].nuspec" />
     <_ContentIncludedByDefault Remove="wwwroot\Themes\Templates\External\template.json" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\Themes\" />
   </ItemGroup>
 </Project>
