@@ -164,7 +164,7 @@ namespace Oqtane.Controllers
                     if (folder.ParentId != null)
                     {
                         Folder parent = _folders.GetFolder(folder.ParentId.Value);
-                        folder.Path = Utilities.UrlCombine(parent.Path, folder.Name);
+                        folder.Path = Path.Combine(parent.Path, folder.Name);
                     }
                     folder.Path = folder.Path + "/";
 
