@@ -17,9 +17,9 @@
         <tags>oqtane</tags>
     </metadata>
     <files>
-        <file src="bin\net6.0\Oqtane.Database.SqlServer.dll" target="lib\net6.0" />
-        <file src="bin\net6.0\Oqtane.Database.SqlServer.pdb" target="lib\net6.0" />
-        <file src="bin\net6.0\Microsoft.EntityFrameworkCore.SqlServer.dll" target="lib\net6.0" />
+        <file src="bin\net8.0\Oqtane.Database.SqlServer.dll" target="lib\net8.0" />
+        <file src="bin\net8.0\Oqtane.Database.SqlServer.pdb" target="lib\net8.0" />
+        <file src="bin\net8.0\Microsoft.EntityFrameworkCore.SqlServer.dll" target="lib\net8.0" />
         <file src="icon.png" target="" />
     </files>
 </package>
