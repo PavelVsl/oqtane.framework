@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Oqtane.Models;
 using Oqtane.Repository.Databases.Interfaces;
 
@@ -11,6 +12,14 @@ namespace Oqtane.Repository
     public class TenantDBContext : DBContextBase, IMultiDatabase
     {
         public TenantDBContext(IDBContextDependencies DBContextDependencies) : base(DBContextDependencies) { }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder
+                .ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
+            base.OnConfiguring(optionsBuilder);
+        }
+
 
         public virtual DbSet<Site> Site { get; set; }
         public virtual DbSet<Page> Page { get; set; }

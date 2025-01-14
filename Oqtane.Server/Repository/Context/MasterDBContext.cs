@@ -10,6 +10,7 @@ using Oqtane.Repository.Databases.Interfaces;
 using Oqtane.Shared;
 using System.Threading.Tasks;
 using System.Threading;
+using Microsoft.EntityFrameworkCore.Diagnostics;
 using Oqtane.Infrastructure;
 
 // ReSharper disable BuiltInTypeReferenceStyleForMemberAccess
@@ -35,7 +36,9 @@ namespace Oqtane.Repository
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.ReplaceService<IMigrationsAssembly, MultiDatabaseMigrationsAssembly>();
+            optionsBuilder
+                .ReplaceService<IMigrationsAssembly, MultiDatabaseMigrationsAssembly>()
+                .ConfigureWarnings(warnings => warnings.Ignore(RelationalEventId.PendingModelChangesWarning));
 
             if(_config != null)
             {
