@@ -29,13 +29,8 @@ namespace Oqtane.Services
 
         public async Task<List<File>> GetFilesAsync(int siteId, string folderPath)
         {
-            if (!(folderPath.EndsWith(System.IO.Path.DirectorySeparatorChar) || folderPath.EndsWith(System.IO.Path.AltDirectorySeparatorChar)))
-            {
-                folderPath = Utilities.UrlCombine(folderPath) + "/";
-            }
 
             var path = WebUtility.UrlEncode(folderPath);
-
             List<File> files = await GetJsonAsync<List<File>>($"{Apiurl}/{siteId}/{path}");
             return files?.OrderBy(item => item.Name).ToList();
         }

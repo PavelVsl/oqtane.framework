@@ -239,7 +239,7 @@ namespace Oqtane.Pages
                 }
                 else
                 {
-                    Message = "Site Not Configured Correctly - No Matching Alias Exists For Host Name";
+                    Message = "Site Not Configured Correctly - No Matching Alias Exists For Host Name ->" + HttpContext.Request.GetEncodedUrl();
                 }
             }
             return Page();

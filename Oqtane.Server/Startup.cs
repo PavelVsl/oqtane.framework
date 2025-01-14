@@ -173,7 +173,7 @@ namespace Oqtane
             // allow oqtane localization middleware
             app.UseOqtaneLocalization();
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseStaticFiles();
             app.UseTenantResolution();
             app.UseJwtAuthorization();

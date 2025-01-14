@@ -20,6 +20,7 @@ using SixLabors.ImageSharp;
 using SixLabors.ImageSharp.Processing;
 using SixLabors.ImageSharp.Formats.Png;
 using System.Net.Http;
+using Microsoft.AspNetCore.CookiePolicy;
 
 // ReSharper disable StringIndexOfIsCultureSpecific.1
 
@@ -96,8 +97,12 @@ namespace Oqtane.Controllers
         public IEnumerable<Models.File> Get(int siteId, string path)
         {
             List<Models.File> files;
+            path = WebUtility.UrlDecode(path);
 
-            Folder folder = _folders.GetFolder(siteId, WebUtility.UrlDecode(path));
+            //append slash if missing
+            if (!path.EndsWith("/")) path += "/";
+
+            Folder folder = _folders.GetFolder(siteId, path);
             if (folder != null && folder.SiteId == _alias.SiteId && _userPermissions.IsAuthorized(User, PermissionNames.Browse, folder.PermissionList))
             {
                 files = _files.GetFiles(folder.FolderId).ToList();
