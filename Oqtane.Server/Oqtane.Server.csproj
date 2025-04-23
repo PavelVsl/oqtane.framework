@@ -126,6 +126,7 @@
     <_ContentIncludedByDefault Remove="wwwroot\Themes\Templates\External\template.json" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="wwwroot\Modules\" />
     <Folder Include="wwwroot\Themes\" />
   </ItemGroup>
 </Project>
